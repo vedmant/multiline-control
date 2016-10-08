@@ -1,0 +1,22 @@
+{
+  "name": "multiline-control",
+  "version": "1.0.0",
+  "description": "Form control that allows to edit multiple lines, change order, remove lines.",
+  "main": "multiline-control.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "multiline-control",
+    "multiple",
+    "lines"
+  ],
+  "author": "Vedmant",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp-copy": "0.0.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.0.0",
+    "pump": "^1.0.1"
+  }
+}
