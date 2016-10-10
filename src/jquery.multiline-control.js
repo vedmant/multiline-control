@@ -1,7 +1,3 @@
-/**
- * Multiline control jQeury plugin
- */
-
 // the semi-colon before function invocation is a safety net against concatenated
 // scripts and/or other plugins which may not be closed properly.
 
