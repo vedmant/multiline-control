@@ -1,0 +1,8 @@
+{
+  "preset": "jquery",
+  "requireCapitalizedComments": null,
+  "excludeFiles": [ "node_modules", "dist", "!src" ],
+  "maxErrors": -1,
+  "validateQuoteMarks": { "mark": "'", "escape": true },
+  "disallowMultipleLineStrings": false
+}

@@ -1,0 +1,31 @@
+{
+  "name": "jquery-boilerplate",
+  "license": "MIT",
+  "authors": [
+    "Vedmant <vedmant@gmail.com>"
+  ],
+  "description": "Form control that allows to edit multiple lines, change order, remove lines.",
+  "homepage": "https://vedmant.github.io/multiline-control/",
+  "keywords": [
+    "jquery",
+    "plugin",
+    "multiline-control",
+    "multiple",
+    "lines"
+  ],
+  "main": "src/jquery.multiline-control.js",
+  "dependencies": {
+    "jquery": "1"
+  },
+  "ignore": [
+    "npm-debug.log",
+    "bower_components",
+    "node_modules",
+    "src",
+    "test",
+    ".jscsrc",
+    ".jshintrc",
+    "Gruntfile.js",
+    "karma.conf.js"
+  ]
+}
