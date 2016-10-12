@@ -17,16 +17,16 @@
       sortable: true,
       templateContainer: '<div class="multiline-control"></div>',
       templateAddBtn: '<a href="#" class="mc-add-btn btn btn-success btn-sm">Add</a>',
-      templateLine: '\
-         <div class="form-group mc-row">\
-            <div class="input-group">\
-               <input type="text" class="form-control" value="{value}">\
-               <a href="#" class="input-group-addon btn btn-default btn-sm mc-remove-btn">\
-                  <i class="glyphicon glyphicon-remove"></i>\
-               </a>\
-            </div>\
-         </div>',
-      onChange: $.noop,
+      templateLine:
+         '<div class="form-group mc-row">' +
+            '<div class="input-group">' +
+               '<input type="text" class="form-control" value="{value}">' +
+               '<a href="#" class="input-group-addon btn btn-default btn-sm mc-remove-btn">' +
+                  '<i class="glyphicon glyphicon-remove"></i>' +
+               '</a>' +
+            '</div>' +
+         '</div>',
+      onChange: $.noop
    };
 
    // The actual plugin constructor

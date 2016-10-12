@@ -4,7 +4,9 @@ Form control that allows to edit multiple lines, change order, remove lines.
 
 Turn your textarea to multiline control.
 
-## Usage
+[Here's a demo!](https://vedmant.github.io/multiline-control/)
+
+### Usage
 
 1. Include jQuery:
 
@@ -24,6 +26,15 @@ Turn your textarea to multiline control.
     $('.multiline-control').multiline_control();
     ```	
 
-## Contributing
+### Contributing
 
 Check [CONTRIBUTING.md](https://github.com/vedmant/multiline-control/blob/master/CONTRIBUTING.md) for more information.
+
+### Browser support
+Compatible with All Browsers and IE8+.
+
+### License
+  
+Muntiline control is licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
+Copyright (c) 2016 Vedmant

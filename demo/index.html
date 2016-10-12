@@ -105,20 +105,23 @@ second@emai.com</textarea>
 &lt;/script&gt;
 </pre>
 
-   <h2>Full options list</h2>
+   <h2>Full options list (default values)</h2>
 
    <pre>
 $('.multiline-control').multiline_control({
    sortable: true,
-   template_container: '&lt;div class="multiline-control"&gt;&lt;/div&gt;',
-   template_add_btn: '&lt;a href="#" class="mc-add-btn btn btn-success btn-sm"&gt;Add&lt;/a&gt;',
-   template_line: '\
-      &lt;div class="form-group mc-row"&gt;\
-         &lt;div class="input-group"&gt;\
-            &lt;input type="text" class="form-control" value="{value}"&gt;\
-            &lt;a href="#" class="input-group-addon btn btn-default btn-sm mc-remove-btn"&gt;&lt;i class="glyphicon glyphicon-remove"&gt;&lt;/i&gt;&lt;/a&gt;\
-         &lt;/div&gt;\
-      &lt;/div&gt;',
+   templateContainer: '&lt;div class="multiline-control"&gt;&lt;/div&gt;',
+   templateAddBtn: '&lt;a href="#" class="mc-add-btn btn btn-success btn-sm"&gt;Add&lt;/a&gt;',
+   templateLine:
+      '&lt;div class="form-group mc-row"&gt;' +
+         '&lt;div class="input-group"&gt;' +
+            '&lt;input type="text" class="form-control" value="{value}"&gt;' +
+            '&lt;a href="#" class="input-group-addon btn btn-default btn-sm mc-remove-btn"&gt;' +
+               '&lt;i class="glyphicon glyphicon-remove"&gt;&lt;/i&gt;' +
+            '&lt;/a&gt;' +
+         '&lt;/div&gt;' +
+      '&lt;/div&gt;',
+   onChange: $.noop
 });
 </pre>
 
