@@ -6,10 +6,6 @@
  *  Made by Vedmant
  *  Under MIT License
  */
-/**
- * Multiline control jQeury plugin
- */
-
 // the semi-colon before function invocation is a safety net against concatenated
 // scripts and/or other plugins which may not be closed properly.
 
@@ -21,7 +17,7 @@
 // window and document are passed through as local variables rather than global
 // as this (slightly) quickens the resolution process and can be more efficiently
 // minified (especially when both are regularly referenced in your plugin).
-;( function($, window, document, undefined ) {
+;( function( $, window, document, undefined ) {
    'use strict';
 
    var pluginName = 'multiline_control';
@@ -29,15 +25,16 @@
       sortable: true,
       templateContainer: '<div class="multiline-control"></div>',
       templateAddBtn: '<a href="#" class="mc-add-btn btn btn-success btn-sm">Add</a>',
-      templateLine: '\
-         <div class="form-group mc-row">\
-            <div class="input-group">\
-               <input type="text" class="form-control" value="{value}">\
-               <a href="#" class="input-group-addon btn btn-default btn-sm mc-remove-btn">\
-                  <i class="glyphicon glyphicon-remove"></i>\
-               </a>\
-            </div>\
-         </div>'
+      templateLine:
+         '<div class="form-group mc-row">' +
+            '<div class="input-group">' +
+               '<input type="text" class="form-control" value="{value}">' +
+               '<a href="#" class="input-group-addon btn btn-default btn-sm mc-remove-btn">' +
+                  '<i class="glyphicon glyphicon-remove"></i>' +
+               '</a>' +
+            '</div>' +
+         '</div>',
+      onChange: $.noop
    };
 
    // The actual plugin constructor
@@ -161,6 +158,7 @@
             value += $( this ).val() + '\n';
          } );
          this.$element.val( value );
+         this.options.onChange( value );
       },
 
       /**
@@ -198,11 +196,37 @@
       /**
        * Destroy plugin
        */
-      remove: function() {
+      destroy: function() {
          this.$container.remove();
          this.$addBtn.remove();
          this.$element.show();
          this.$element.removeData( 'plugin_' + this._name );
+      },
+
+      /**
+       * Remove all lines
+       */
+      empty: function() {
+         this.$container.find( '.mc-row' ).remove();
+      },
+
+      /**
+       * Update value
+       *
+       * @param value
+       */
+      update: function( value ) {
+         var that = this;
+         this.empty();
+
+         // Add lines
+         var lines = value.split( /\n/ );
+         lines.forEach( function( val ) {
+            if ( val === '' ) {
+               return;
+            }
+            that.addLine( val );
+         } );
       }
 
    } ); // Plugin.prototype

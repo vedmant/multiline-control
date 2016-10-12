@@ -1,95 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Multiline control demo</title>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+   <title>Multiline control demo</title>
+   <!-- Latest compiled and minified CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+   <!-- Optional theme -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+         integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+   <!-- Font Awesome -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 
-  <style>
-    body {
-      margin: 70px 0;
-    }
+   <style>
+      body {
+         margin: 70px 0;
+      }
 
-    .arrow-example {
-      padding: 10px;
-      font-size: 100px;
-    }
+      .arrow-example {
+         padding: 10px;
+         font-size: 100px;
+      }
 
-    h2 {
-      margin-bottom: 40px;
-      margin-top: 40px;
-    }
+      h2 {
+         margin-bottom: 40px;
+         margin-top: 40px;
+      }
 
-    .nav i.fa {
-      font-size: 18px;
-    }
-  </style>
+      .nav i.fa {
+         font-size: 18px;
+      }
+   </style>
 
 </head>
 <body>
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-1"
-              aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Multiline control</a>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-navbar-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="https://github.com/vedmant/multiline-control/zipball/master"><i
-           class="glyphicon glyphicon-download-alt"></i> Download zip</a></li>
-        <li><a href="https://github.com/vedmant/multiline-control/tarball/master"><i
-           class="glyphicon glyphicon-download-alt"></i> Download tar.gz</a></li>
-        <li><a href="https://github.com/vedmant/multiline-control"><i class="fa fa-github"></i> GitHub</a></li>
-      </ul>
-    </div>
-  </div>
+   <div class="container">
+      <div class="navbar-header">
+         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-1"
+                 aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+         </button>
+         <a class="navbar-brand" href="#">Multiline control</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-navbar-1">
+         <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://github.com/vedmant/multiline-control/zipball/master"><i
+               class="glyphicon glyphicon-download-alt"></i> Download zip</a></li>
+            <li><a href="https://github.com/vedmant/multiline-control/tarball/master"><i
+               class="glyphicon glyphicon-download-alt"></i> Download tar.gz</a></li>
+            <li><a href="https://github.com/vedmant/multiline-control"><i class="fa fa-github"></i> GitHub</a></li>
+         </ul>
+      </div>
+   </div>
 </nav>
 
 <div class="container">
 
-  <h2>Textarea to Multiline control</h2>
+   <h2>Textarea to Multiline control</h2>
 
-  <div class="row">
-    <div class="col-md-5">
-      <div class="form-group">
-        <label>Turn your textarea</label>
-        <textarea class="form-control" rows="4">first@emai.com
+   <div class="row">
+      <div class="col-md-5">
+         <div class="form-group">
+            <label>Turn your textarea</label>
+            <textarea class="form-control initial" rows="4">first@emai.com
 second@emai.com</textarea>
+         </div>
       </div>
-    </div>
-    <div class="col-md-2 text-center">
-      <i class="glyphicon glyphicon-arrow-right arrow-example hidden-xs hidden-sm"></i>
-      <i class="glyphicon glyphicon-arrow-down arrow-example visible-xs visible-sm"></i>
-    </div>
-    <div class="col-md-5">
-      <div class="form-group">
-        <label>To line-by-line editor with validation and sorting</label>
-        <textarea class="form-control multiline-control">first@emai.com
+      <div class="col-md-2 text-center">
+         <i class="glyphicon glyphicon-arrow-right arrow-example hidden-xs hidden-sm"></i>
+         <i class="glyphicon glyphicon-arrow-down arrow-example visible-xs visible-sm"></i>
+      </div>
+      <div class="col-md-5">
+         <div class="form-group">
+            <label>To line-by-line editor with validation and sorting</label>
+            <textarea class="form-control multiline-control">first@emai.com
 second@emai.com</textarea>
+         </div>
       </div>
-    </div>
-  </div>
+   </div>
 
-  <h2>How to use</h2>
+   <h2>How to use</h2>
 
-  <pre>
+   <pre>
 &lt;!-- Here is your textarea --&gt;
 &lt;textarea class="form-control multiline-control"&gt;&lt;/textarea&gt;
 
@@ -105,20 +105,23 @@ second@emai.com</textarea>
 &lt;/script&gt;
 </pre>
 
-  <h2>Full options list</h2>
+   <h2>Full options list (default values)</h2>
 
-  <pre>
+   <pre>
 $('.multiline-control').multiline_control({
    sortable: true,
-   template_container: '&lt;div class="multiline-control"&gt;&lt;/div&gt;',
-   template_add_btn: '&lt;a href="#" class="mc-add-btn btn btn-success btn-sm"&gt;Add&lt;/a&gt;',
-   template_line: '\
-      &lt;div class="form-group mc-row"&gt;\
-         &lt;div class="input-group"&gt;\
-            &lt;input type="text" class="form-control" value="{value}"&gt;\
-            &lt;a href="#" class="input-group-addon btn btn-default btn-sm mc-remove-btn"&gt;&lt;i class="glyphicon glyphicon-remove"&gt;&lt;/i&gt;&lt;/a&gt;\
-         &lt;/div&gt;\
-      &lt;/div&gt;',
+   templateContainer: '&lt;div class="multiline-control"&gt;&lt;/div&gt;',
+   templateAddBtn: '&lt;a href="#" class="mc-add-btn btn btn-success btn-sm"&gt;Add&lt;/a&gt;',
+   templateLine:
+      '&lt;div class="form-group mc-row"&gt;' +
+         '&lt;div class="input-group"&gt;' +
+            '&lt;input type="text" class="form-control" value="{value}"&gt;' +
+            '&lt;a href="#" class="input-group-addon btn btn-default btn-sm mc-remove-btn"&gt;' +
+               '&lt;i class="glyphicon glyphicon-remove"&gt;&lt;/i&gt;' +
+            '&lt;/a&gt;' +
+         '&lt;/div&gt;' +
+      '&lt;/div&gt;',
+   onChange: $.noop
 });
 </pre>
 
@@ -126,11 +129,23 @@ $('.multiline-control').multiline_control({
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="dist/jquery.multiline-control.min.js"></script>
+<script src="../src/jquery.multiline-control.js"></script>
 <script>
-  jQuery( function( $ ) {
-    $( '.multiline-control' ).multiline_control();
-  } );
+   jQuery( function( $ ) {
+      var $initial_textarea = $( '.initial' );
+      var $multiline_control = $( '.multiline-control' );
+
+      $multiline_control.multiline_control( {
+         onChange: function( value ) {
+            $initial_textarea.val( value );
+         }
+      } );
+
+      $initial_textarea.change(function( e ) {
+         $multiline_control.multiline_control( 'update', $( this ).val() );
+      });
+
+   } );
 </script>
 </body>
 </html>
