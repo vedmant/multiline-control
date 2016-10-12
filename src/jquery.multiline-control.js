@@ -25,7 +25,8 @@
                   <i class="glyphicon glyphicon-remove"></i>\
                </a>\
             </div>\
-         </div>'
+         </div>',
+      onChange: $.noop,
    };
 
    // The actual plugin constructor
@@ -149,6 +150,7 @@
             value += $( this ).val() + '\n';
          } );
          this.$element.val( value );
+         this.options.onChange( value );
       },
 
       /**
@@ -186,11 +188,37 @@
       /**
        * Destroy plugin
        */
-      remove: function() {
+      destroy: function() {
          this.$container.remove();
          this.$addBtn.remove();
          this.$element.show();
          this.$element.removeData( 'plugin_' + this._name );
+      },
+
+      /**
+       * Remove all lines
+       */
+      empty: function() {
+         this.$container.find( '.mc-row' ).remove();
+      },
+
+      /**
+       * Update value
+       *
+       * @param value
+       */
+      update: function( value ) {
+         var that = this;
+         this.empty();
+
+         // Add lines
+         var lines = value.split( /\n/ );
+         lines.forEach( function( val ) {
+            if ( val === '' ) {
+               return;
+            }
+            that.addLine( val );
+         } );
       }
 
    } ); // Plugin.prototype

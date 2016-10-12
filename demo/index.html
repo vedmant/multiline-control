@@ -70,7 +70,7 @@
       <div class="col-md-5">
          <div class="form-group">
             <label>Turn your textarea</label>
-            <textarea class="form-control" rows="4">first@emai.com
+            <textarea class="form-control initial" rows="4">first@emai.com
 second@emai.com</textarea>
          </div>
       </div>
@@ -126,10 +126,22 @@ $('.multiline-control').multiline_control({
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="../src/multiline-control.js"></script>
+<script src="../src/jquery.multiline-control.js"></script>
 <script>
    jQuery( function( $ ) {
-      $( '.multiline-control' ).multiline_control();
+      var $initial_textarea = $( '.initial' );
+      var $multiline_control = $( '.multiline-control' );
+
+      $multiline_control.multiline_control( {
+         onChange: function( value ) {
+            $initial_textarea.val( value );
+         }
+      } );
+
+      $initial_textarea.change(function( e ) {
+         $multiline_control.multiline_control( 'update', $( this ).val() );
+      });
+
    } );
 </script>
 </body>
