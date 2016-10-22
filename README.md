@@ -37,7 +37,7 @@ Turn your textarea to multiline control.
 Check [CONTRIBUTING.md](https://github.com/vedmant/multiline-control/blob/master/CONTRIBUTING.md) for more information.
 
 ### Browser support
-Compatible with All Browsers and IE8+.
+Compatible with all modern browsers with HTML5 support.
 
 ### License
   
