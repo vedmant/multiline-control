@@ -6,6 +6,12 @@ Turn your textarea to multiline control.
 
 [Here's a demo!](https://vedmant.github.io/multiline-control/)
 
+### Features
+
+- Sort order
+- Validation
+- Lightweight
+
 ### Usage
 
 1. Include jQuery:

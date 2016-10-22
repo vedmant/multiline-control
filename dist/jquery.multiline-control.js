@@ -24,16 +24,19 @@
    var defaults = {
       sortable: true,
       templateContainer: '<div class="multiline-control"></div>',
-      templateAddBtn: '<a href="#" class="mc-add-btn btn btn-success btn-sm">Add</a>',
+      templateAddBtn: '<a href="#" class="mc-add-btn btn btn-success btn"><i class="glyphicon glyphicon-plus"></i></a>',
       templateLine:
          '<div class="form-group mc-row">' +
             '<div class="input-group">' +
+               '{sorting_handle}' +
                '<input type="text" class="form-control" value="{value}">' +
                '<a href="#" class="input-group-addon btn btn-default btn-sm mc-remove-btn">' +
                   '<i class="glyphicon glyphicon-remove"></i>' +
                '</a>' +
             '</div>' +
          '</div>',
+      templateHandle: '<div class="input-group-addon mc-handle" style="cursor: move;"><i class="glyphicon glyphicon-move"></i></div>',
+      templateSortablePlaceholder: '<div class="mc-sortable-placeholder form-group form-control" style="border: 1px dashed blue;"></div>',
       onChange: $.noop
    };
 
@@ -81,6 +84,10 @@
          this.buildTemplate();
 
          this.bindEvents();
+
+         if ( this.options.sortable ) {
+            this.initSorting();
+         }
 
          // Add lines
          var lines = this.$element.val().split( /\n/ );
@@ -147,6 +154,77 @@
       },
 
       /**
+       * Init drag and drop sotring
+       */
+      initSorting: function() {
+         var that = this,
+            index,
+            $dragging,
+            isHandle = false,
+            $placeholder = $( this.options.templateSortablePlaceholder );
+
+         // Save clicked item if it's handle
+         this.$container.on( 'mousedown', '.mc-handle', function() {
+            isHandle = true;
+         } );
+
+         // Drag start
+         this.$container.on( 'dragstart', '.mc-row', function( e ) {
+            if ( isHandle ) {
+               index = ( $dragging = $( this ) ).addClass( 'mc-sortable-dragging' ).index();
+               var dt = e.originalEvent.dataTransfer;
+               dt.effectAllowed = 'move';
+               dt.setData( 'Text', 'dummy' );
+            } else {
+               e.preventDefault();
+            }
+         } );
+
+         this.$container.on( 'dragend', '.mc-row', function() {
+            isHandle = false;
+            if ( !$dragging ) {
+               return;
+            }
+
+            $dragging.removeClass( 'mc-sortable-dragging' ).show();
+            $placeholder.detach();
+
+            if ( index !== $dragging.index() ) {
+               $dragging.parent().trigger( 'sortupdate', { item: $dragging } );
+               that.updateTextarea();
+            }
+
+            $dragging = null;
+         } );
+
+         this.$container.on( 'dragover dragenter', '.mc-row', function( e ) {
+            var $this = $( this );
+            e.preventDefault();
+            e.originalEvent.dataTransfer.dropEffect = 'move';
+            $dragging.hide();
+
+            if ( $placeholder.index() < $this.index() ) {
+               $this.after( $placeholder );
+            } else {
+               $this.before( $placeholder );
+            }
+         } );
+
+         this.$container.on( 'drop', '.mc-row, .mc-sortable-placeholder', function( e ) {
+            e.stopPropagation();
+            $placeholder.after( $dragging );
+            $dragging.trigger( 'dragend' );
+            return false;
+         } );
+
+         // Cancle events on .mc-sortable-placeholder to allow drop event
+         this.$container.on( 'dragleave dragover', '.mc-row, .mc-sortable-placeholder', function( e ) {
+            e.preventDefault();
+            e.stopPropagation();
+         } );
+      },
+
+      /**
        * Update textarea value
        */
       updateTextarea: function() {
@@ -172,7 +250,17 @@
             str = '';
          }
 
-         var $row = $( this.options.templateLine.replace( '{value}', str ) );
+         var template = this.options.templateLine.replace( '{value}', str );
+
+         // Add handle if sortable is enabled
+         template = template.replace( '{sorting_handle}',
+            this.options.sortable ? this.options.templateHandle : '' );
+
+         var $row = $( template );
+
+         if ( this.options.sortable ) {
+            $row.attr( 'draggable', 'true' );
+         }
 
          if ( typeof $after !== 'undefined' ) {
             $after.closest( '.mc-row' ).after( $row );
