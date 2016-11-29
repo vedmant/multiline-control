@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <title>Multiline control demo</title>
+   <!-- Latest compiled and minified CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+   <!-- Optional theme -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+         integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+   <!-- Font Awesome -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+   <script src="src/jquery.multiline-control.js"></script>
+
+   <style>
+      body {
+         margin: 70px 0;
+      }
+
+      .arrow-example {
+         padding: 10px;
+         font-size: 100px;
+      }
+
+      h2 {
+         margin-bottom: 40px;
+         margin-top: 40px;
+      }
+
+      .nav i.fa {
+         font-size: 18px;
+      }
+   </style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+   <div class="container">
+      <div class="navbar-header">
+         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-1"
+                 aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+         </button>
+         <a class="navbar-brand" href="#">Multiline control</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-navbar-1">
+         <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://github.com/vedmant/multiline-control/zipball/master"><i
+               class="glyphicon glyphicon-download-alt"></i> Download zip</a></li>
+            <li><a href="https://github.com/vedmant/multiline-control/tarball/master"><i
+               class="glyphicon glyphicon-download-alt"></i> Download tar.gz</a></li>
+            <li><a href="https://github.com/vedmant/multiline-control"><i class="fa fa-github"></i> GitHub</a></li>
+         </ul>
+      </div>
+   </div>
+</nav>
+
+<div class="container">
+
+   <h2>Textarea to Multiline control</h2>
+
+   <div class="row">
+      <div class="col-md-5">
+         <div class="form-group">
+            <label>Turn your textarea</label>
+            <textarea class="form-control initial" rows="4">first@email.com
+second@email.com</textarea>
+         </div>
+      </div>
+      <div class="col-md-2 text-center">
+         <i class="glyphicon glyphicon-arrow-right arrow-example hidden-xs hidden-sm"></i>
+         <i class="glyphicon glyphicon-arrow-down arrow-example visible-xs visible-sm"></i>
+      </div>
+      <div class="col-md-5">
+         <form id="test_form">
+            <div class="form-group">
+               <label>To line-by-line editor with validation and sorting</label>
+               <textarea name="emails" class="form-control multiline-control">first@email.com
+second@email.com</textarea>
+            </div>
+         </form>
+      </div>
+   </div>
+
+   <h2>How to use</h2>
+
+   <pre>
+&lt;!-- Add textarea --&gt;
+&lt;textarea class="form-control multiline-control"&gt;&lt;/textarea&gt;
+
+&lt;!-- Include jQuery --&gt;
+&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"&gt;&lt;/script&gt;
+&lt;!-- Include plugin file --&gt;
+&lt;script src="js/multiline-control.min.js"&gt;&lt;/script&gt;
+&lt;!-- Initialize plugin for .multiline-control class elements --&gt;
+&lt;script&gt;
+   jQuery(function ($) {
+      $('.multiline-control').multiline_control();
+   });
+&lt;/script&gt;
+</pre>
+
+   <h2>Full options list (default values)</h2>
+
+   <pre>
+      $('.multiline-control').multiline_control({
+         sortable: true,
+         templateContainer: '&lt;div class=&quot;multiline-control&quot;&gt;&lt;/div&gt;',
+         templateAddBtn: '&lt;a href=&quot;#&quot; class=&quot;mc-add-btn btn btn-success btn&quot;&gt;&lt;i class=&quot;glyphicon glyphicon-plus&quot;&gt;&lt;/i&gt;&lt;/a&gt;',
+         templateLine:
+            '&lt;div class=&quot;form-group mc-row&quot;&gt;' +
+               '&lt;div class=&quot;input-group&quot;&gt;' +
+                  '{sorting_handle}' +
+                  '&lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;{name}&quot; value=&quot;{value}&quot;&gt;' +
+                  '&lt;a href=&quot;#&quot; class=&quot;input-group-addon btn btn-default btn-sm mc-remove-btn&quot;&gt;' +
+                     '&lt;i class=&quot;glyphicon glyphicon-remove&quot;&gt;&lt;/i&gt;' +
+                  '&lt;/a&gt;' +
+               '&lt;/div&gt;' +
+            '&lt;/div&gt;',
+         templateHandle: '&lt;div class=&quot;input-group-addon mc-handle&quot; style=&quot;cursor: move;&quot;&gt;&lt;i class=&quot;glyphicon glyphicon-move&quot;&gt;&lt;/i&gt;&lt;/div&gt;',
+         templateSortablePlaceholder: '&lt;div class=&quot;mc-sortable-placeholder form-group form-control&quot; style=&quot;border: 1px dashed blue;&quot;&gt;&lt;/div&gt;',
+         onChange: $.noop
+      });
+</pre>
+
+   <h2>Validation support</h2>
+
+   This plugin supports vallidation based on <a href="https://jqueryvalidation.org/">https://jqueryvalidation.org/</a> with following settings:
+<pre>
+$('#test_form').validate({
+   onkeyup: function (element) { $(element).valid() },
+   rules: {
+      'emails_mc[]': 'email',
+   },
+   highlight: function(element) {
+      $(element).closest('.form-group').addClass('has-error');
+   },
+   unhighlight: function(element) {
+      $(element).closest('.form-group').removeClass('has-error');
+   },
+   errorElement: 'span',
+   errorClass: 'help-block',
+   errorPlacement: function(error, element) {
+      if(element.parent('.input-group').length) {
+         error.insertAfter(element.parent());
+      } else {
+         error.insertAfter(element);
+      }
+   },
+});
+</pre>
+
+</div>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
+<script>
+   jQuery( function( $ ) {
+      var $initial_textarea = $( '.initial' );
+      var $multiline_control = $( '.multiline-control' );
+
+      $multiline_control.multiline_control( {
+         onChange: function( value ) {
+            $initial_textarea.val( value );
+         }
+      } );
+
+      $initial_textarea.change(function( e ) {
+         $multiline_control.multiline_control( 'update', $( this ).val() );
+      });
+
+      $('#test_form').validate({
+         onkeyup: function (element) { $(element).valid() },
+         rules: {
+            'emails_mc[]': 'email',
+         },
+         highlight: function(element) {
+            $(element).closest('.form-group').addClass('has-error');
+         },
+         unhighlight: function(element) {
+            $(element).closest('.form-group').removeClass('has-error');
+         },
+         errorElement: 'span',
+         errorClass: 'help-block',
+         errorPlacement: function(error, element) {
+            if(element.parent('.input-group').length) {
+               error.insertAfter(element.parent());
+            } else {
+               error.insertAfter(element);
+            }
+         },
+      });
+
+   } );
+</script>
+</body>
+</html>

@@ -21,7 +21,7 @@
          '<div class="form-group mc-row">' +
             '<div class="input-group">' +
                '{sorting_handle}' +
-               '<input type="text" class="form-control" value="{value}">' +
+               '<input type="text" class="form-control" name="{name}" value="{value}">' +
                '<a href="#" class="input-group-addon btn btn-default btn-sm mc-remove-btn">' +
                   '<i class="glyphicon glyphicon-remove"></i>' +
                '</a>' +
@@ -42,6 +42,7 @@
       // more objects, storing the result in the first object. The first object
       // is generally empty as we don't want to alter the default options for
       // future instances of the plugin
+      this.defaults = defaults;
       this.options = $.extend( {}, defaults, options );
       this.options = $.extend( {}, this.options, dataOptions );
       this.init();
@@ -242,7 +243,9 @@
             str = '';
          }
 
-         var template = this.options.templateLine.replace( '{value}', str );
+         var template = this.options.templateLine
+            .replace( '{value}', str )
+            .replace( '{name}', this.$element.attr( 'name' ) + '_mc[]' );
 
          // Add handle if sortable is enabled
          template = template.replace( '{sorting_handle}',
@@ -307,6 +310,13 @@
             }
             that.addLine( val );
          } );
+      },
+
+      /**
+       * Get default settings
+       */
+      getDefaults: function() {
+         return this.defaults;
       }
 
    } ); // Plugin.prototype

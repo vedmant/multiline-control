@@ -15,6 +15,10 @@
    <!-- Font Awesome -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+   <script src="src/jquery.multiline-control.js"></script>
+
    <style>
       body {
          margin: 70px 0;
@@ -79,21 +83,23 @@ second@email.com</textarea>
          <i class="glyphicon glyphicon-arrow-down arrow-example visible-xs visible-sm"></i>
       </div>
       <div class="col-md-5">
-         <div class="form-group">
-            <label>To line-by-line editor with validation and sorting</label>
-            <textarea class="form-control multiline-control">first@email.com
+         <form id="test_form">
+            <div class="form-group">
+               <label>To line-by-line editor with validation and sorting</label>
+               <textarea name="emails" class="form-control multiline-control">first@email.com
 second@email.com</textarea>
-         </div>
+            </div>
+         </form>
       </div>
    </div>
 
    <h2>How to use</h2>
 
    <pre>
-&lt;!-- Here is your textarea --&gt;
+&lt;!-- Add textarea --&gt;
 &lt;textarea class="form-control multiline-control"&gt;&lt;/textarea&gt;
 
-&lt;!-- You will need jQuery --&gt;
+&lt;!-- Include jQuery --&gt;
 &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"&gt;&lt;/script&gt;
 &lt;!-- Include plugin file --&gt;
 &lt;script src="js/multiline-control.min.js"&gt;&lt;/script&gt;
@@ -108,28 +114,57 @@ second@email.com</textarea>
    <h2>Full options list (default values)</h2>
 
    <pre>
-$('.multiline-control').multiline_control({
-   sortable: true,
-   templateContainer: '&lt;div class="multiline-control"&gt;&lt;/div&gt;',
-   templateAddBtn: '&lt;a href="#" class="mc-add-btn btn btn-success btn-sm"&gt;Add&lt;/a&gt;',
-   templateLine:
-      '&lt;div class="form-group mc-row"&gt;' +
-         '&lt;div class="input-group"&gt;' +
-            '&lt;input type="text" class="form-control" value="{value}"&gt;' +
-            '&lt;a href="#" class="input-group-addon btn btn-default btn-sm mc-remove-btn"&gt;' +
-               '&lt;i class="glyphicon glyphicon-remove"&gt;&lt;/i&gt;' +
-            '&lt;/a&gt;' +
-         '&lt;/div&gt;' +
-      '&lt;/div&gt;',
-   onChange: $.noop
+      $('.multiline-control').multiline_control({
+         sortable: true,
+         templateContainer: '&lt;div class=&quot;multiline-control&quot;&gt;&lt;/div&gt;',
+         templateAddBtn: '&lt;a href=&quot;#&quot; class=&quot;mc-add-btn btn btn-success btn&quot;&gt;&lt;i class=&quot;glyphicon glyphicon-plus&quot;&gt;&lt;/i&gt;&lt;/a&gt;',
+         templateLine:
+            '&lt;div class=&quot;form-group mc-row&quot;&gt;' +
+               '&lt;div class=&quot;input-group&quot;&gt;' +
+                  '{sorting_handle}' +
+                  '&lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;{name}&quot; value=&quot;{value}&quot;&gt;' +
+                  '&lt;a href=&quot;#&quot; class=&quot;input-group-addon btn btn-default btn-sm mc-remove-btn&quot;&gt;' +
+                     '&lt;i class=&quot;glyphicon glyphicon-remove&quot;&gt;&lt;/i&gt;' +
+                  '&lt;/a&gt;' +
+               '&lt;/div&gt;' +
+            '&lt;/div&gt;',
+         templateHandle: '&lt;div class=&quot;input-group-addon mc-handle&quot; style=&quot;cursor: move;&quot;&gt;&lt;i class=&quot;glyphicon glyphicon-move&quot;&gt;&lt;/i&gt;&lt;/div&gt;',
+         templateSortablePlaceholder: '&lt;div class=&quot;mc-sortable-placeholder form-group form-control&quot; style=&quot;border: 1px dashed blue;&quot;&gt;&lt;/div&gt;',
+         onChange: $.noop
+      });
+</pre>
+
+   <h2>Validation support</h2>
+
+   This plugin supports vallidation based on <a href="https://jqueryvalidation.org/">https://jqueryvalidation.org/</a> with following settings:
+<pre>
+$('#test_form').validate({
+   onkeyup: function (element) { $(element).valid() },
+   rules: {
+      'emails_mc[]': 'email',
+   },
+   highlight: function(element) {
+      $(element).closest('.form-group').addClass('has-error');
+   },
+   unhighlight: function(element) {
+      $(element).closest('.form-group').removeClass('has-error');
+   },
+   errorElement: 'span',
+   errorClass: 'help-block',
+   errorPlacement: function(error, element) {
+      if(element.parent('.input-group').length) {
+         error.insertAfter(element.parent());
+      } else {
+         error.insertAfter(element);
+      }
+   },
 });
 </pre>
 
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="../src/jquery.multiline-control.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
 <script>
    jQuery( function( $ ) {
       var $initial_textarea = $( '.initial' );
@@ -143,6 +178,28 @@ $('.multiline-control').multiline_control({
 
       $initial_textarea.change(function( e ) {
          $multiline_control.multiline_control( 'update', $( this ).val() );
+      });
+
+      $('#test_form').validate({
+         onkeyup: function (element) { $(element).valid() },
+         rules: {
+            'emails_mc[]': 'email',
+         },
+         highlight: function(element) {
+            $(element).closest('.form-group').addClass('has-error');
+         },
+         unhighlight: function(element) {
+            $(element).closest('.form-group').removeClass('has-error');
+         },
+         errorElement: 'span',
+         errorClass: 'help-block',
+         errorPlacement: function(error, element) {
+            if(element.parent('.input-group').length) {
+               error.insertAfter(element.parent());
+            } else {
+               error.insertAfter(element);
+            }
+         },
       });
 
    } );
