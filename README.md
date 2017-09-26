@@ -8,6 +8,7 @@ Turn your textarea to multiline control.
 
 ### Features
 
+- Bootstrap forms layout
 - Sort order
 - Validation
 - Lightweight
@@ -16,21 +17,34 @@ Turn your textarea to multiline control.
 
 1. Include jQuery:
 
-    ```html
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    ```
+```html
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+```
 
 2. Include plugin's code:
     
-    ```html
-    <script src="dist/jquery.multiline-control.min.js"></script>
-    ```
+```html
+<script src="dist/jquery.multiline-control.min.js"></script>
+```
 
 3. Call the plugin:
 
-    ```javascript
-    $('.multiline-control').multiline_control();
-    ```	
+```javascript
+$('.multiline-control').multiline_control();
+```
+
+### Install via NPM or Yarn
+
+1. Install via npm of yarn
+
+```bash
+npm install --save multiline-control
+# OR
+yarn add multiline-control
+```
+
+    
+
 
 ### Contributing
 
@@ -42,5 +56,3 @@ Compatible with all modern browsers with HTML5 support.
 ### License
   
 Muntiline control is licensed under the [MIT license](http://opensource.org/licenses/MIT).
-
-Copyright (c) 2016 Vedmant

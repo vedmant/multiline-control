@@ -1,8 +1,8 @@
 {
   "name": "multiline-control",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Form control that allows to edit multiple lines, change order, remove lines.",
-  "main": "multiline-control.js",
+  "main": "dist/jquery.multiline-control.js",
   "scripts": {
     "jscs": "jscs src",
     "test": "npm run jscs && gulp travis --verbose"
